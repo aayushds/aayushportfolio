@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% load static %}
+<link rel="stylesheet" type = "text/css" href="{% static 'CSS/index.css' %}"/>
+<style>
+body {font-family: "Times New Roman", Georgia, Serif;}
+h1,h2,h3,h4,h5,h6 {
+    font-family: "Playfair Display";
+    letter-spacing: 5px;
+}
+</style>
+<body>
+<!-- Navbar (sit on top) -->
+<div class="w3-top sticky" id="navbar">
+  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+    <a href="/cv/" class="w3-bar-item w3-button zoom">Aayush Shah</a>
+    <!-- Right-sided navbar links. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="/cv/education/" class="w3-bar-item w3-button zoom">Education</a>
+      <a href="/cv/projects/" class="w3-bar-item w3-button zoom">Projects</a>
+      <a href="/cv/resume/" class="w3-bar-item w3-button zoom">Resume</a>
+      <a href="/cv/skills/" class="w3-bar-item w3-button zoom">Skills</a>
+      <a href="/cv/contact/" class="w3-bar-item w3-button zoom">Contact</a>
+    </div>
+  </div>
+</div>
+<script>
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+</script>   
+</body>
+</html>

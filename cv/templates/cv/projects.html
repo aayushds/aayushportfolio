@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+{% load static %}
+
+<body>
+{% include 'cv/navbar.html' %} 
+<!-- Page Content -->
+
+<div class="w3-content" style="max-width:1100px; margin-top:50px;">
+    <div class="w3-col 112 w3-padding">
+        <h1 class="w3-center">Projects</h1><br>
+    </div>    
+    {% for pro in mypro %}
+        <div class = "w3-padding">    
+            <br><br><h5 class="w3-center">{{pro.project_name}}</h6>
+        </div>    
+        <div class="w3-padding-small">      
+            <h5 class="w3-center">Description</h6>
+            <h6 class="w3-center"> {{pro.description}}</h6><br>
+            <h5 class="w3-center">Technologies Used</h6>
+            <h6 class="w3-center"> {{pro.technologies_used}}</h6><br>
+        </div>
+        <hr class = "style-two">    
+    {% endfor %}
+</div> 
+  
+</body>
+</html>   

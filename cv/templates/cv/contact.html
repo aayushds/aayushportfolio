@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<body>
+{% include 'cv/navbar.html' %} 
+<!-- Page Content -->  
+<div class="w3-content" style="max-width:1100px; margin-top:50px;">
+    <div class="w3-col 112 w3-padding">
+        <h1 class="w3-center">Contact Info</h1><br>
+    </div>    
+
+    <form method = "POST">
+        {% csrf_token %}
+        {{ myform }}
+        <input type="submit" value="Submit"/>
+    </form>
+    
+</div>
+</body>
+</html>   

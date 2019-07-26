@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+{% load static %}
+<body>
+{% include 'cv/navbar.html' %}
+
+<!-- Page Content -->  
+<div class="w3-content" style="max-width:1100px; margin-top:50px;">
+    <div class="w3-col 112 w3-padding">
+        <h1 class="w3-center">Education</h1>
+    </div>
+    <br><br><br><br>
+    {% for inst in myinst %}
+    <div class="row1 collapsible zoom1" onclick = "loadcourse('{{inst.pk}}')">
+        <div class = "w3-padding column1">
+            {% csrf_token %}
+            <h5 class="w3-center" id = "{{inst.pk}}">{{inst.institution}}</h6>
+        </div>    
+        <div class = "w3-padding-small column2">      
+            <p class="w3-center"> {{inst.location}}</p>
+            <p class="w3-center">{{inst.degree}} in {{inst.course}}</p>
+            <p class="w3-center">Graduation Date: {{inst.graddate}}</p>
+            <p class="w3-center">Overall GPA: {{inst.grades}}</p>
+        </div>
+    </div>
+    <!--<hr class = "style-two">-->    
+    {% endfor %}
+</div>
+<div class="top_of_page" id="Course_grade">
+    <div class = "close_button" id="X_button" onclick="closecourse()">X</div>
+    <div class = "row_course" id = "course_css">
+        <div class = "column_course" id = "course_list"></div>
+        <br><br><div class = "column_grade" id = "grade_list"></div>
+    </div>
+</div>
+<script>
+function loadcourse(institution)
+{
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function()
+{
+if (this.readyState == 4 && this.status == 200) 
+        {
+            var result = JSON.parse(this.responseText);
+            var display_course = document.getElementById("Course_grade");
+            document.getElementById("course_list").innerHTML = "";
+            document.getElementById("grade_list").innerHTML = "" ;
+            for (x in result)
+            {
+            document.getElementById("course_list").innerHTML += x + "<br>";
+            document.getElementById("grade_list").innerHTML += result[x] + "<br>";
+            }
+            display_course.style.display = 'block';
+       }
+}
+xhttp.open("GET", "/cv/courses/?inst_id="+institution, true);
+xhttp.send();
+}
+
+function closecourse(){
+    var display_course = document.getElementById("Course_grade");
+    display_course.style.display = 'none';
+
+}
+
+</script>    
+</body>
+</html>   
