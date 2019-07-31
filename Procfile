@@ -1,1 +1,1 @@
-web: gunicorn aayushresume.wsgi --log-file -
+web: gunicorn aayushresume.wsgi
